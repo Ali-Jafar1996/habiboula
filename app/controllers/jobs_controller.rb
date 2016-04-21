@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :admin_only
+  #before_action :admin_only
 
   # GET /jobs
   # GET /jobs.json
