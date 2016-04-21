@@ -25,10 +25,21 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    @idea = Idea.new(idea_params)
+    @newparam = idea_params.merge(:user_id => current_user.id) #############
+    @idea = Idea.new(@newparam) ##########
+    #@idea = Idea.new(idea_params)
 
     respond_to do |format|
       if @idea.save
+
+        @array = {} ############
+        @array[:user_id] = current_user.id ############
+        @array[:idea_id] = @idea.read_attribute(:id) ##########
+        @array[:role_id] = @idea.user.role.read_attribute(:id) ####--#--#--#--# 
+
+        @user_idea = Job.new(@array) #########
+        @user_idea.save ##########
+
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
       else

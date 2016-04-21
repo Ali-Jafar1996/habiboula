@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
 	belongs_to :platform
 	belongs_to :user
+	belongs_to :role ###########
 	has_many :jobs
 
 	validates :name, presence: true

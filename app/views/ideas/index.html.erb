@@ -22,8 +22,8 @@
         <td><%= idea.description %></td>
         <td><%= idea.skills %></td>
         <td><%= idea.add_information %></td>
-        <td><%= idea.user_id %></td>
-        <td><%= idea.platform_id %></td>
+        <td><%= idea.user.username %></td>
+        <td><%= idea.platform.name %></td>
         <td><%= link_to 'Show', idea %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
         <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
