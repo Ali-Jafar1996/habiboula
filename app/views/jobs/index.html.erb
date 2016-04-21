@@ -20,9 +20,17 @@
         <td><%= job.role_id %></td>
         <td><%= job.idea_id %></td>
         <td><%= job.created_id %></td>
-        <td><%= job.user_id %></td>
+        
+        <% if job.user_id != 0 %>
+          <td><%= job.user_id %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
+
         <td><%= job.filled %></td>
         <td><%= link_to 'Show', job %></td>
+
+
         
         <% if job.created_id != current_user.id && job.filled == false %>
 

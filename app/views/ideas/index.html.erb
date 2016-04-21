@@ -25,7 +25,13 @@
         <td><%= idea.add_information %></td>
         <td><%= idea.user.username %></td>
         <td><%= idea.platform.name %></td>
-        <td><%= idea.role %></td>
+
+        <td>
+        <% for i in 0..idea.role.length-1 %>
+          <p><%= Role.find(idea.role[i].to_i).name %></p>
+        <% end %>
+        </td>
+
         <td><%= link_to 'Show', idea %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
         <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
