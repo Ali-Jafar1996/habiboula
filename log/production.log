@@ -1,0 +1,6 @@
+W, [2016-04-21T12:36:28.432626 #29190]  WARN -- : DEPRECATION WARNING on line 78 of /Users/alijafar/.rvm/gems/ruby-2.0.0-p643/gems/foundation-rails-5.5.3.2/vendor/assets/stylesheets/foundation/components/_top-bar.scss: #{} interpolation near operators will be simplified
+in a future version of Sass. To preserve the current behavior, use quotes:
+
+  unquote("#{lower-bound($medium-range)}")
+
+
