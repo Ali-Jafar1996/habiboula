@@ -1,7 +1,9 @@
 class Idea < ActiveRecord::Base
+	serialize :role
+
 	belongs_to :platform
 	belongs_to :user
-	belongs_to :role ###########
+	belongs_to :job
 	has_many :jobs
 
 	validates :name, presence: true

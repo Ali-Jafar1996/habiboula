@@ -25,20 +25,35 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    @newparam = idea_params.merge(:user_id => current_user.id) #############
+    @selectedjob = params[:role_check] || []
+    @newparam = idea_params.merge(:user_id => current_user.id, :role => @selectedjob) #############
     @idea = Idea.new(@newparam) ##########
-    #@idea = Idea.new(idea_params)
+    #@idea = Idea.new(idea_params)  
 
     respond_to do |format|
       if @idea.save
 
-        @array = {} ############
-        @array[:user_id] = current_user.id ############
-        @array[:idea_id] = @idea.read_attribute(:id) ##########
-        @array[:role_id] = @idea.user.role.read_attribute(:id) ####--#--#--#--# 
+        for i in 0..@selectedjob.length-1
+          puts "xyzxyzxyzxyzxyzxyz"
+          puts @selectedjob[i]
 
-        @user_idea = Job.new(@array) #########
-        @user_idea.save ##########
+          @array = {}
+          @array[:user_id] = 0
+          @array[:idea_id] = @idea.read_attribute(:id)
+          @array[:role_id] = @selectedjob[i]
+          @array[:filled] = false
+          @array[:created_id] = current_user.id
+          @user_idea = Job.new(@array)
+          @user_idea.save
+        end
+
+          # @array = {} ############
+        # @array[:user_id] = current_user.id ############
+        # @array[:idea_id] = @idea.read_attribute(:id) ##########
+        # @array[:role_id] = @idea.user.role.read_attribute(:id) ####--#--#--#--# 
+
+        # @user_idea = Job.new(@array) #########
+        # @user_idea.save ##########
 
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
@@ -66,7 +81,18 @@ class IdeasController < ApplicationController
   # DELETE /ideas/1
   # DELETE /ideas/1.json
   def destroy
+    @jobs = Job.where(idea_id: @idea.id)
+
     @idea.destroy
+
+    puts "yooooooooooo"
+    puts @jobs
+
+    for i in 0..@jobs.length-1
+      @jobs[i].destroy
+    end
+
+
     respond_to do |format|
       format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }

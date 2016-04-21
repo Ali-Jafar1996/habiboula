@@ -2,6 +2,22 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   #before_action :admin_only
 
+  def apply
+    puts "yoooo yooo yooo"
+    @applyingfor = params[:id]
+
+    @thisjob = Job.find(@applyingfor)
+    @thisjob.filled = true
+    @thisjob.user_id = current_user.id
+    @thisjob.save
+
+    respond_to do |format|
+      format.html { redirect_to jobs_url, notice: 'You applied for the job' }
+      format.json { head :no_content }
+    end
+  end
+
+
   # GET /jobs
   # GET /jobs.json
   def index

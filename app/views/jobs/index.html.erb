@@ -7,7 +7,9 @@
     <tr>
       <th>Role</th>
       <th>Idea</th>
+      <th>Who made Idea</th>
       <th>User</th>
+      <th>Filled</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,10 +19,17 @@
       <tr>
         <td><%= job.role_id %></td>
         <td><%= job.idea_id %></td>
+        <td><%= job.created_id %></td>
         <td><%= job.user_id %></td>
+        <td><%= job.filled %></td>
         <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <% if job.created_id != current_user.id && job.filled == false %>
+
+          <td><%= link_to 'Apply For Job', apply_path(job.id) %></td>
+
+        <% end %> 
+
       </tr>
     <% end %>
   </tbody>

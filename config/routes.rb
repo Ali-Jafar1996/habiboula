@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   delete 'visitors/index' => 'sessions#destroy', as: :logout
   get 'users/new' => 'users#new', as: :signup
   get 'Login' => 'sessions#create'
+
+  get 'jobs/:id/apply' => "jobs#apply", as: :apply
 end

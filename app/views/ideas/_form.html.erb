@@ -7,6 +7,12 @@
     <%= f.input :skills %>
     <%= f.input :add_information %>
     <%= f.association :platform, as: :radio_buttons%>
+
+    <% for role in Role.all  %>
+      <p> <%= check_box_tag 'role_check[]', role.id %> <%= role.name %></p>
+    <% end  %>
+
+
   </div>
 
   <div class="form-actions">
