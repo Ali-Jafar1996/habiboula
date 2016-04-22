@@ -1,1 +1,33 @@
+<p id="notice"><%= notice %></p>
+
 <h3>Welcome</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Idea Name</th>
+      <th>Description</th>
+      <th>Skills Required</th>
+      <th>Platform</th>
+      <th>Role</th>
+      <th>Filled</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @jobs.each do |job| %>
+    <tr>
+        <td><%= job.idea.name %></td>
+        <td><%= job.idea.description %></td>
+        <td><%= job.idea.skills %></td>
+        <td><%= job.idea.platform.name %></td>
+        <td><%= job.role.name %></td>
+        <td><%= job.filled %></td>
+        <td><%= link_to 'Show', job %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<h5>Sign Up/Login to apply for jobs & create your own app ideas!</h5>

@@ -64,13 +64,11 @@ class UsersController < ApplicationController
   end
 
   def make_admin
-      @user.toggle!(:admin)
-      if @user.save
-        redirect_to users_path, notice: 'User was successfully updated.'
-      else
-        flash[:alert]= 'Error updating user'
-        redirect_to users_path
-      end
+      @tochange = User.find(params[:id])
+
+      @tochange.toggle!(:admin)
+      @tochange.save
+      redirect_to users_path, notice: 'User was successfully updated.'
   end
 
   private

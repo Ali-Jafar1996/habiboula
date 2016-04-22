@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Idea:</strong>
+  <%= @job.idea.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= '@job.idea.description' %>
+</p>
+
+<p>
+  <strong>Skills:</strong>
+  <%= '@job.idea.skills' %>
+</p>
+
+<p>
+  <strong>Additional Information:</strong>
+  <%= '@job.idea.add_description' %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= '@job.idea.platform.name' %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= '@job.role.name' %>
+</p>
+
+<p>
+  <strong>User who applied for this job:</strong>
+  <% if '@job.user_id' == 0 %>
+  	<%= "No one" %>
+  <% else %>
+  	<%= '@job.user.username' %>
+  <% end %>
+</p>
+
+<%= link_to 'Back', root_path %>

@@ -2,18 +2,37 @@
 
 <p>
   <strong>Role:</strong>
-  <%= @job.role_id %>
+  <%= @job.role.name %>
 </p>
 
 <p>
   <strong>Idea:</strong>
-  <%= @job.idea_id %>
+  <%= @job.idea.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @job.user_id %>
+  <strong>Description:</strong>
+  <%= @job.idea.description %>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<p>
+  <strong>Skills:</strong>
+  <%= @job.idea.skills %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @job.idea.platform.name %>
+</p>
+
+<p>
+  <strong>User who applied for this job:</strong>
+  <% if @job.user_id == 0 %>
+  	<%= "No one" %>
+  <% else %>
+  	<%= @job.user.username %>
+  <% end %>
+</p>
+
+<!--<%= link_to 'Edit', edit_job_path(@job) %> |-->
 <%= link_to 'Back', jobs_path %>

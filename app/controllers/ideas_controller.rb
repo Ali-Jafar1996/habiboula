@@ -67,8 +67,17 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def update
+    @selectedjob = params[:role_check] || []
+    @newparam = idea_params.merge(:role => @selectedjob)
+
     respond_to do |format|
-      if @idea.update(idea_params)
+      if @idea.update(@newparam)
+        
+
+
+        #puts @selectedjob
+
+
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
       else

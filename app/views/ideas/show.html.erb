@@ -16,19 +16,19 @@
 </p>
 
 <p>
-  <strong>Add information:</strong>
+  <strong>Additional information:</strong>
   <%= @idea.add_information %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @idea.user_id %>
+  <strong>User who created idea:</strong>
+  <%= @idea.user.username %>
 </p>
 
 <p>
   <strong>Platform:</strong>
-  <%= @idea.platform_id %>
+  <%= @idea.platform.name %>
 </p>
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<!--<%= link_to 'Edit', edit_idea_path(@idea) %> |-->
 <%= link_to 'Back', ideas_path %>

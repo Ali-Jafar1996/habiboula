@@ -8,4 +8,8 @@ class Job < ActiveRecord::Base
 	validates :user_id, presence: true
 
 	scope :empty_jobs, -> {where(filled: false)}
+	scope :idea_name_asc, -> {order('job.idea.name ASC')} ##########
+	scope :idea_name_desc, -> {order('job.idea.name DESC')} ##########
+	scope :new_order, -> {order('job.created_at DESC')} ##########
+	scope :old_order, -> {order('job.create_at ASC')} ##########
 end

@@ -2,6 +2,26 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   #before_action :admin_only
 
+  def idea_name_asc
+    @jobs = Job.idea_name_asc
+  end
+
+  def idea_name_desc
+    @jobs = Job.idea_name_des
+  end
+
+  def new_order
+    @jobs = Job.new_order
+  end
+
+  def old_order
+    @jobs = Job.old_order
+  end
+
+  def empty_jobs
+    @jobs = Job.empty_jobs
+  end
+
   def apply
     puts "yoooo yooo yooo"
     @applyingfor = params[:id]
